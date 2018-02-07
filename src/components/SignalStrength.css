@@ -1,0 +1,53 @@
+
+.signal-strength {
+  height: 60px;
+  list-style: none;
+  min-width: 120px;
+  overflow: hidden;
+}
+
+.signal-strength li {
+  display: inline-block;
+  width: 12px;
+  float: left;
+  height: 98%;
+  margin-right: 4px;
+}
+
+.signal-strength li.very-strong {
+  height: 58px;
+  padding-top: 0;
+}
+
+.signal-strength li.strong {
+  height: 46px;
+  padding-top: 12px;
+
+}
+
+.signal-strength li.moderate {
+  height: 34px;
+  padding-top: 24px;
+}
+
+
+.signal-strength li.weak {
+  height: 22px;
+  padding-top: 36px;
+}
+
+.signal-strength li.very-weak {
+  height: 10px;
+  padding-top: 48px;
+
+}
+
+.signal-strength li div.absent {
+  height: 99%;
+  border: thin solid rgb(64,180,229);
+}
+
+.signal-strength li div.present {
+  height: 103%;
+  background: rgb(64,180,229);
+}
