@@ -7,6 +7,11 @@ class SignalStrength extends Component {
     this.state = props;
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.signal_strength !== this.state.signal_strength) {
+      this.setState({ signal_strength: nextProps.signal_strength });
+    }
+  }
   render() {
     return (
       <ul className="signal-strength">

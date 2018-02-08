@@ -7,9 +7,7 @@ class App extends Component {
     super()
     this.state = {
       connectivity: {
-        connected: false,
-        signal_strength: 2,
-        bearer: 'sbb'
+        connected: false
       },
       services: []
     }
@@ -17,30 +15,20 @@ class App extends Component {
 
   componentDidMount() {
     fetch(`http://localhost:9292/api/v1/connectivity`)
-      .then(result => result.json().then(connectivity => this.setState(connectivity)))
+      .then(result => result.json().then(connectivity => {this.setState({connectivity})}))
   }
 
   render() {
-    let services = this.state.services.map(service => {
-      if (!service.available) return null
-      return <li key={service.name}>{service.name}</li>
-    }).filter(item => item)
-    if (!services.length) services = <li>None</li>
-    
     return (
       <div className="App">
-        <div>
-          The connected state is {this.state.connected ? 'connected' : 'disconnected'}
-        </div>
-
-        <SignalStrength signal_strength={this.state.connectivity.signal_strength}/>
-
-        <div>
-          <span>Available Services</span>
-          <ul>
-          {services}
-          </ul>
-        </div>
+        <div className="logo"><div>MY<br/>Co</div></div>
+        <h2>Connect to Your Aircraft's Wireless Network</h2>
+        <ul>
+          <li>Internet: <div className={'connectivity_status ' + (this.state.connectivity.connected ? 'available' : '')}>{this.state.connectivity.connected ? 'Available' : 'Unavailable'}</div></li>
+          {this.state.connectivity.connected && <li>Bearer: <div className="connectivity_bearer">{this.state.connectivity.bearer}</div></li>}
+          {this.state.connectivity.connected && <li>Signal Strength: <SignalStrength signal_strength={this.state.connectivity.signal_strength}/></li>}
+        </ul>
+        {this.state.connectivity.connected && <button>Connect</button>}
       </div>
     )
   }

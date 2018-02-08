@@ -3,5 +3,50 @@
 }
 
 li {
+  margin: 5px 0;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+}
+
+.logo div {
+  background-color: red;
+  height: 30px;
+  width: 30px;
+  color: white;
+  font-size: .8rem;
+}
+
+.connectivity_status {
+  width: 100px;
+  height: 18px;
+  border: 1px solid black;
+  display: inline-block;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  background-color: crimson;
+  color: white;
+}
+
+.connectivity_status.available {
+  background-color: forestgreen;
+}
+
+.connectivity_bearer {
+  width: 100px;
+  height: 18px;
+  border: 1px solid black;
+  display: inline-block;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  padding: 5px;
+}
+
+li {
   list-style: none;
+}
+
+li ul {
+  display: inline-block;
 }
