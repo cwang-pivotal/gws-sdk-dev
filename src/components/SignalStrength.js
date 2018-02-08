@@ -8,7 +8,6 @@ class SignalStrength extends Component {
   }
 
   render() {
-    debugger;
     return (
       <ul className="signal-strength">
         <li className="very-weak"><div className={this.state.signal_strength > 0 ? 'present' : 'absent'}></div></li>

@@ -11,20 +11,7 @@ class App extends Component {
         signal_strength: 2,
         bearer: 'sbb'
       },
-      services: [
-        {
-          name: 'E-Magazines',
-          available: false
-        },
-        {
-          name: 'Gogo Text and Talk',
-          available: true
-        },
-        {
-          name: 'Gogo Vision',
-          available: true
-        }
-      ]
+      services: []
     }
   }
 
@@ -34,10 +21,11 @@ class App extends Component {
   }
 
   render() {
-    const services = this.state.services.map(service => {
+    let services = this.state.services.map(service => {
       if (!service.available) return null
-      return <li>{service.name}</li>
-    });
+      return <li key={service.name}>{service.name}</li>
+    }).filter(item => item)
+    if (!services.length) services = <li>None</li>
     
     return (
       <div className="App">
@@ -48,7 +36,7 @@ class App extends Component {
         <SignalStrength signal_strength={this.state.connectivity.signal_strength}/>
 
         <div>
-          Available Services:
+          <span>Available Services</span>
           <ul>
           {services}
           </ul>
